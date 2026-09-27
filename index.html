@@ -255,14 +255,14 @@ dialog::backdrop{background:rgba(5,7,10,.7);backdrop-filter:blur(6px)}
   <svg class="hero-bolt" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6z"/></svg>
   <div class="wrap">
     <div class="hero-content">
-      <span class="pill reveal"><span class="dot"></span>Termine für PV-Anlagen &amp; Elektroinstallation verfügbar</span>
-      <h1 class="reveal" data-delay="1">Photovoltaik &amp;<br>Elektrotechnik <span class="hl">aus dem Flachgau</span></h1>
-      <p class="lead reveal" data-delay="2">Planung, Montage und Anmeldung Ihrer Photovoltaikanlage mit Speicher sowie Elektroinstallationen für Haus und Gewerbe. Persönlich, regional und aus einer Hand.</p>
-      <div class="hero-cta reveal" data-delay="3">
+      <span class="pill"><span class="dot"></span>Termine für PV-Anlagen &amp; Elektroinstallation verfügbar</span>
+      <h1 class="reveal">Photovoltaik &amp;<br>Elektrotechnik <span class="hl">aus dem Flachgau</span></h1>
+      <p class="lead">Planung, Montage und Anmeldung Ihrer Photovoltaikanlage mit Speicher sowie Elektroinstallationen für Haus und Gewerbe. Persönlich, regional und aus einer Hand.</p>
+      <div class="hero-cta">
         <a class="btn btn-primary" href="https://wa.me/436603723101" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Anfrage per WhatsApp</a>
         <a class="btn btn-ghost" href="#leistungen"><svg><use href="#i-bolt"/></svg>Leistungen ansehen</a>
       </div>
-      <div class="trust reveal" data-delay="3">
+      <div class="trust">
         <div><svg><use href="#i-shield"/></svg>Elektrotechnik-Meisterbetrieb</div>
         <div><svg><use href="#i-pin"/></svg>Straßwalchen · Flachgau · Innviertel</div>
         <div><svg><use href="#i-hand"/></svg>Beratung, Montage &amp; Anmeldung aus einer Hand</div>
@@ -439,6 +439,7 @@ dialog::backdrop{background:rgba(5,7,10,.7);backdrop-filter:blur(6px)}
       entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}});
     },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
     document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+    setTimeout(function(){document.querySelectorAll('.reveal:not(.in)').forEach(function(el){var r=el.getBoundingClientRect();if(r.top<window.innerHeight&&r.bottom>0)el.classList.add('in')})},1200);
   }else{document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in')})}
 })();
 </script>
