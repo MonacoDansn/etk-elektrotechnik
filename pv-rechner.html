@@ -317,6 +317,7 @@ dialog::backdrop{background:rgba(5,7,10,.7);backdrop-filter:blur(6px)}
 .field input[type=range]{width:100%;accent-color:var(--yellow);height:34px}
 .field .hint{font-size:.85rem;color:var(--paper-muted)}
 .seg{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.seg3{grid-template-columns:repeat(3,1fr)}
 .seg label{position:relative}
 .seg input{position:absolute;opacity:0;inset:0}
 .seg span{display:block;text-align:center;padding:10px 6px;border-radius:12px;border:1px solid rgba(18,21,28,.14);font-size:.9rem;cursor:pointer;transition:all .2s}
@@ -326,6 +327,8 @@ dialog::backdrop{background:rgba(5,7,10,.7);backdrop-filter:blur(6px)}
 .tg{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:14px;border:1px solid rgba(18,21,28,.12);cursor:pointer;transition:all .2s}
 .tg:has(input:checked){border-color:rgba(255,171,17,.8);background:#fff8e6}
 .tg input{width:22px;height:22px;accent-color:var(--yellow);flex:none}
+.tg-sel{justify-content:space-between}.tg-sel select{padding:10px 12px;border-radius:10px;border:1px solid rgba(18,21,28,.15);font:inherit;background:#fff;font-weight:600}
+.tg:has(select option:checked:not([value="0"])){border-color:rgba(255,171,17,.8);background:#fff8e6}
 .tg b{display:block;font-size:.98rem}
 .tg small{color:var(--paper-muted);font-size:.85rem}
 .results{display:grid;gap:18px}
@@ -418,11 +421,10 @@ dialog::backdrop{background:rgba(5,7,10,.7);backdrop-filter:blur(6px)}
         </div>
         <div class="field">
           <div class="lbl"><span>Ausrichtung des Dachs</span></div>
-          <div class="seg">
-            <label><input type="radio" name="o" value="1000" checked><span>Süd</span></label>
-            <label><input type="radio" name="o" value="950"><span>Südost / Südwest</span></label>
-            <label><input type="radio" name="o" value="880"><span>Ost / West</span></label>
-            <label><input type="radio" name="o" value="760"><span>Flach / Nord</span></label>
+          <div class="seg seg3">
+            <label><input type="radio" name="o" value="1100" checked><span>Süd</span></label>
+            <label><input type="radio" name="o" value="800"><span>Ost / West</span></label>
+            <label><input type="radio" name="o" value="500"><span>Nord</span></label>
           </div>
         </div>
         <div class="field">
@@ -430,7 +432,7 @@ dialog::backdrop{background:rgba(5,7,10,.7);backdrop-filter:blur(6px)}
           <div class="toggles">
             <label class="tg"><input type="checkbox" id="hp"><span><b>Wärmepumpe</b><small>Heizen und Warmwasser mit Strom, plus rund 3.000 kWh pro Jahr</small></span></label>
             <label class="tg"><input type="checkbox" id="ev"><span><b>Elektroauto</b><small>Laden zu Hause, plus rund 2.500 kWh pro Jahr bei 15.000 km</small></span></label>
-            <label class="tg"><input type="checkbox" id="bat"><span><b>Stromspeicher</b><small>Rund 10 kWh, Solarstrom auch abends und nachts nutzen</small></span></label>
+            <label class="tg tg-sel"><span><b>Stromspeicher Huawei LUNA2000</b><small>Solarstrom auch abends und nachts nutzen</small></span><select id="bat"><option value="0">Kein Speicher</option><option value="5">5 kWh</option><option value="7">7 kWh</option><option value="10">10 kWh</option><option value="12">12 kWh</option><option value="14">14 kWh</option><option value="15">15 kWh</option><option value="21">21 kWh</option></select></label>
           </div>
         </div>
         <div class="field">
@@ -443,11 +445,11 @@ dialog::backdrop{background:rgba(5,7,10,.7);backdrop-filter:blur(6px)}
       <div class="results">
         <div class="kpi">
           <div class="hi"><small>Ersparnis pro Jahr</small><b id="rSave">0 Euro</b></div>
-          <div><small>Amortisation</small><b id="rPay">0 Jahre</b></div>
           <div><small>Solarertrag pro Jahr</small><b id="rYield">0 kWh</b></div>
+          <div><small>Selbst genutzt</small><b id="rSelfKwh">0 kWh</b></div>
           <div><small>Eigenverbrauch</small><b id="rSelf">0 %</b></div>
           <div><small>Autarkie</small><b id="rAut">0 %</b></div>
-          <div><small>Richtkosten komplett</small><b id="rCost">0 Euro</b></div>
+          <div><small>Weniger Netzstrom</small><b id="rGrid">0 kWh</b></div>
         </div>
         <div class="panel chart">
           <h3>Woher kommt Ihr Strom?</h3>
@@ -461,7 +463,7 @@ dialog::backdrop{background:rgba(5,7,10,.7);backdrop-filter:blur(6px)}
             <div class="legend"><span class="c-sun">Selbst verbraucht <b id="l2a"></b></span><span class="c-feed">Eingespeist <b id="l2b"></b></span></div>
           </div>
           <div class="tip" id="tip"></div>
-          <p class="disclaimer">Richtwerte: Ertrag je nach Ausrichtung 760 bis 1.000 kWh pro kWp und Jahr, Einspeisevergütung 6 Cent/kWh, Speicher 10 kWh, Kosten schlüsselfertig inklusive Montage und Anmeldung. Verschattung, Dachneigung und Ihr Nutzungsverhalten verändern das Ergebnis. Die genaue Planung machen wir gemeinsam vor Ort.</p>
+          <p class="disclaimer">Richtwerte: Ertrag je nach Ausrichtung 500 bis 1.100 kWh pro kWp und Jahr, Einspeisevergütung 6 Cent/kWh. Verschattung, Dachneigung und Ihr Nutzungsverhalten verändern das Ergebnis. Die genaue Planung machen wir gemeinsam vor Ort.</p>
         </div>
         <div class="cta-band" style="margin-top:0">
           <div><h3>Ergebnis gefällt? Dann rechnen wir es genau.</h3><p>Kostenlose Dachbesichtigung und Angebot pro Position, ohne versteckte Extras.</p></div>
@@ -485,30 +487,29 @@ dialog::backdrop{background:rgba(5,7,10,.7);backdrop-filter:blur(6px)}
     var ratio=y/cons; var base=ratio<=0.5?0.55:ratio<=1?0.42-(ratio-0.5)*0.2:0.32-Math.min(ratio-1,2)*0.06;
     if(hp.checked)base+=0.07; if(ev.checked)base+=0.08;
     var direct=Math.min(y*base, cons*0.6);
-    var fromBat=0;
-    if(bat.checked){ var rest=Math.min(y-direct, cons-direct); fromBat=Math.min(rest*0.55, 300*10*0.9); }
+    var fromBat=0, bs=+bat.value;
+    if(bs>0){ var rest=Math.min(y-direct, cons-direct); fromBat=Math.min(rest*0.6, bs*290); }
     var self=direct+fromBat, feed=Math.max(y-self,0), grid=Math.max(cons-self,0);
     var save=self*pr+feed*0.06;
-    var cost=kwp*(kwp<8?1750:kwp<15?1500:1350)+(bat.checked?6500:0);
-    $('oC').value=f(+c.value)+' kWh'; $('oK').value=(''+kwp).replace('.',',')+' kWp'; $('oP').value=p.value+' Cent/kWh';
+        $('oC').value=f(+c.value)+' kWh'; $('oK').value=(''+kwp).replace('.',',')+' kWp'; $('oP').value=p.value+' Cent/kWh';
     $('hK').textContent='Rund '+Math.round(kwp/0.43)+' Module, etwa '+Math.round(kwp*5)+' m² Dachfläche.';
-    $('rSave').textContent=f(save)+' Euro'; $('rPay').textContent=(cost/save).toFixed(1).replace('.',',')+' Jahre';
+    $('rSave').textContent=f(save)+' Euro'; $('rSelfKwh').textContent=f(self)+' kWh'; $('rGrid').textContent=f(self)+' kWh';
     $('rYield').textContent=f(y)+' kWh'; $('rSelf').textContent=Math.round(self/y*100)+' %'; $('rAut').textContent=Math.round(self/cons*100)+' %';
-    $('rCost').textContent=f(Math.round(cost/100)*100)+' Euro';
-    var w=function(id,v,t){$(id).style.width=(v/t*100)+'%'};
+        var w=function(id,v,t){$(id).style.width=(v/t*100)+'%'};
     w('b1a',direct,cons); w('b1b',fromBat,cons); w('b1c',grid,cons); w('b2a',self,y); w('b2b',feed,y);
     $('l1a').textContent=f(direct)+' kWh'; $('l1b').textContent=f(fromBat)+' kWh'; $('l1c').textContent=f(grid)+' kWh';
     $('l2a').textContent=f(self)+' kWh'; $('l2b').textContent=f(feed)+' kWh';
     var tip='';
-    if(ratio>1.8&&!bat.checked) tip='<b>Tipp: Anlage eher groß für Ihren Verbrauch.</b>Mehr als die Hälfte des Stroms würde eingespeist. Ein Speicher, eine Wallbox oder eine etwas kleinere Anlage rechnen sich besser.';
+    if(ratio>1.8&&bs==0) tip='<b>Tipp: Anlage eher groß für Ihren Verbrauch.</b>Mehr als die Hälfte des Stroms würde eingespeist. Ein Speicher, eine Wallbox oder eine etwas kleinere Anlage rechnen sich besser.';
     else if(ratio<0.6) tip='<b>Tipp: Da geht mehr.</b>Ihr Dach könnte deutlich mehr Verbrauch decken. Prüfen Sie, ob eine größere Anlage Platz hat, pro kWp wird es günstiger.';
-    else if(!bat.checked&&feed>y*0.5) tip='<b>Tipp: Speicher prüfen.</b>Mit einem Speicher würden Sie etwa '+f(Math.min(feed*0.55,2700))+' kWh mehr selbst nutzen statt einzuspeisen.';
-    else tip='<b>Passt gut zusammen.</b>Anlagengröße und Verbrauch sind stimmig. Amortisation in etwa '+Math.round(cost/save)+' Jahren bei 25 bis 30 Jahren Lebensdauer.';
+    else if(bs==0&&feed>y*0.5) tip='<b>Tipp: Speicher prüfen.</b>Mit einem 10-kWh-Speicher würden Sie etwa '+f(Math.min(feed*0.6,2900))+' kWh mehr selbst nutzen statt einzuspeisen.';
+    else if(bs>0&&fromBat<bs*150) tip='<b>Tipp: Speicher eher groß.</b>Der Speicher wird nur teilweise ausgelastet. Eine kleinere Größe reicht bei diesem Verbrauch meist aus.';
+    else tip='<b>Passt gut zusammen.</b>Anlagengröße, Speicher und Verbrauch sind stimmig. Die genaue Auslegung machen wir gemeinsam vor Ort.';
     $('tip').innerHTML=tip;
-    var msg='Hallo, ich habe den PV-Rechner genutzt: Verbrauch '+f(cons)+' kWh, '+kwp+' kWp, '+(bat.checked?'mit':'ohne')+' Speicher'+(hp.checked?', Wärmepumpe':'')+(ev.checked?', E-Auto':'')+'. Bitte um ein Angebot.';
+    var msg='Hallo, ich habe den PV-Rechner genutzt: Verbrauch '+f(cons)+' kWh, '+kwp+' kWp, '+(bs>0?'mit '+bs+' kWh Speicher':'ohne Speicher')+'+(hp.checked?', Wärmepumpe':'')+(ev.checked?', E-Auto':'')+'. Bitte um ein Angebot.';
     $('waLink').href='https://wa.me/436603723101?text='+encodeURIComponent(msg);
   }
-  document.querySelectorAll('#f input').forEach(function(e){e.addEventListener('input',run);e.addEventListener('change',run)});
+  document.querySelectorAll('#f input, #f select').forEach(function(e){e.addEventListener('input',run);e.addEventListener('change',run)});
   run();
 })();
 </script>
