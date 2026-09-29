@@ -406,6 +406,7 @@ dialog::backdrop{background:rgba(5,7,10,.7);backdrop-filter:blur(6px)}
       <li><a href="index.html#ueber">Über mich</a></li>
       <li><a href="index.html#ratgeber">Ratgeber</a></li>
       <li><a href="index.html#faq">FAQ</a></li>
+      <li><a href="pv-rechner.html">PV-Rechner</a></li>
       <li><a href="index.html#kontakt">Kontakt</a></li>
     </ul>
     <a class="btn btn-primary" href="https://wa.me/436603723101" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Jetzt anfragen</a>
@@ -445,27 +446,8 @@ dialog::backdrop{background:rgba(5,7,10,.7);backdrop-filter:blur(6px)}
 <h2>Lohnt sich Photovoltaik 2026?</h2>
 <p>Ja, in fast allen Fällen, wenn die Anlage zur Verbrauchssituation passt. Entscheidend ist der Eigenverbrauch: Jede selbst verbrauchte Kilowattstunde ersetzt Netzstrom zu 25 bis 35 Cent, während die Einspeisevergütung nur wenige Cent bringt. Eine 10-kWp-Anlage im Flachgau erzeugt rund 10.000 kWh pro Jahr. Mit Speicher, Wallbox oder Wärmepumpe steigt der Eigenverbrauch deutlich, und die <strong>Amortisation liegt typischerweise bei 8 bis 12 Jahren</strong>, bei einer Lebensdauer von 25 bis 30 Jahren. Die Rendite liegt damit meist über der einer sicheren Geldanlage.</p>
 <h2>Photovoltaik-Rechner</h2>
-<p>Schätzen Sie Ertrag, Ersparnis und Amortisation für Ihr Haus. Die Werte sind Richtwerte für den Raum Salzburg und ersetzen keine Planung.</p>
-<div class="calc" id="calc">
-  <label>Anlagengröße <span><output id="kwpOut">10</output> kWp</span><input type="range" id="kwp" min="3" max="30" step="1" value="10"></label>
-  <label>Ausrichtung <select id="ori"><option value="1000">Süd (rund 1.000 kWh/kWp)</option><option value="900">Ost/West (rund 900 kWh/kWp)</option><option value="800">Nord oder stark verschattet (rund 800 kWh/kWp)</option></select></label>
-  <label>Stromspeicher <select id="bat"><option value="0">Ohne Speicher</option><option value="1">Mit Speicher (ca. 10 kWh)</option></select></label>
-  <label>Strompreis <span><output id="priceOut">30</output> Cent/kWh</span><input type="range" id="price" min="20" max="45" step="1" value="30"></label>
-  <div class="calc-out">
-    <div><small>Jahresertrag</small><b id="oYield">10.000 kWh</b></div>
-    <div><small>Eigenverbrauch</small><b id="oSelf">3.000 kWh</b></div>
-    <div><small>Ersparnis pro Jahr</small><b id="oSave">1.250 Euro</b></div>
-    <div><small>Richtkosten</small><b id="oCost">15.500 Euro</b></div>
-    <div><small>Amortisation</small><b id="oPay">12 Jahre</b></div>
-  </div>
-</div>
-<script>
-(function(){var k=document.getElementById('kwp'),o=document.getElementById('ori'),b=document.getElementById('bat'),p=document.getElementById('price');
-function f(n){return n.toLocaleString('de-AT')}
-function run(){var kwp=+k.value,y=kwp*(+o.value),bat=+b.value,pr=(+p.value)/100;var share=bat?0.6:0.3;var self=Math.min(y*share,4500+kwp*150);var feed=y-self;var save=self*pr+feed*0.06;var cost=kwp*(kwp>=10?1450:1700)+(bat?6500:0);
-document.getElementById('kwpOut').value=kwp;document.getElementById('priceOut').value=p.value;document.getElementById('oYield').textContent=f(Math.round(y))+' kWh';document.getElementById('oSelf').textContent=f(Math.round(self))+' kWh';document.getElementById('oSave').textContent=f(Math.round(save))+' Euro';document.getElementById('oCost').textContent=f(Math.round(cost/100)*100)+' Euro';document.getElementById('oPay').textContent=(cost/save).toFixed(1).replace('.',',')+' Jahre'}
-[k,o,b,p].forEach(function(e){e.addEventListener('input',run)});run()})();
-</script>
+<p>Verbrauch, Anlagengröße, Ausrichtung, Wärmepumpe, E-Auto und Speicher: Unser <a href="pv-rechner.html"><strong>PV-Rechner</strong></a> zeigt Ihnen in wenigen Sekunden Ertrag, Eigenverbrauch, Ersparnis und Amortisation für Ihr Haus, übersichtlich als Grafik.</p>
+<p><a class="btn btn-dark" href="pv-rechner.html"><svg><use href="#i-bolt"/></svg>Zum PV-Rechner</a></p>
 <h2>PV-Anlage kaufen: Komplettpaket mit Montage</h2>
 <p>Sie bekommen bei uns kein Bausatz-Paket, sondern eine fertig geplante Anlage: Dachcheck, Ertragsberechnung, Komponenten, Montage, Netzanschluss und Prüfprotokoll aus einer Hand. Wir verbauen ausschließlich K2 Unterkonstruktionen und Huawei Wechselrichter mit LUNA2000 Speicher, weil wir damit Garantie, Service und Ersatzteile langfristig sicherstellen können.</p>
 
