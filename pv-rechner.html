@@ -446,7 +446,7 @@ dialog::backdrop{background:rgba(5,7,10,.7);backdrop-filter:blur(6px)}
         <div class="field">
           <div class="lbl"><span>Anlagengröße</span><output id="oK">10 kWp</output></div>
           <input type="range" id="k" min="3" max="30" step="0.5" value="10">
-          <div class="hint" id="hK">Rund 25 Module, etwa 50 m² Dachfläche.</div>
+          <div class="hint" id="hK">Rund 21 Module mit 475 W, etwa 50 m² Dachfläche.</div>
         </div>
         <div class="field">
           <div class="lbl"><span>Ausrichtung des Dachs</span></div>
@@ -521,7 +521,7 @@ dialog::backdrop{background:rgba(5,7,10,.7);backdrop-filter:blur(6px)}
     var self=direct+fromBat, feed=Math.max(y-self,0), grid=Math.max(cons-self,0);
     var save=self*pr+feed*0.06;
         $('oC').value=f(+c.value)+' kWh'; $('oK').value=(''+kwp).replace('.',',')+' kWp'; $('oP').value=p.value+' Cent/kWh';
-    $('hK').textContent='Rund '+Math.round(kwp/0.43)+' Module, etwa '+Math.round(kwp*5)+' m² Dachfläche.';
+    $('hK').textContent='Rund '+Math.round(kwp/0.475)+' Module mit 475 W, etwa '+Math.round(kwp*5)+' m² Dachfläche.';
     $('rSave').textContent=f(save)+' Euro'; $('rSelfKwh').textContent=f(self)+' kWh'; $('rFeed').textContent=f(feed)+' kWh';
     $('rYield').textContent=f(y)+' kWh'; $('rSelf').textContent=Math.round(self/y*100)+' %'; $('rAut').textContent=Math.round(self/cons*100)+' %';
         var w=function(id,v,t){$(id).style.width=(v/t*100)+'%'};
