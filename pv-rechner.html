@@ -449,7 +449,7 @@ dialog::backdrop{background:rgba(5,7,10,.7);backdrop-filter:blur(6px)}
           <div><small>Selbst genutzt</small><b id="rSelfKwh">0 kWh</b></div>
           <div><small>Eigenverbrauch</small><b id="rSelf">0 %</b></div>
           <div><small>Autarkie</small><b id="rAut">0 %</b></div>
-          <div><small>Weniger Netzstrom</small><b id="rGrid">0 kWh</b></div>
+          <div><small>Eingespeist</small><b id="rFeed">0 kWh</b></div>
         </div>
         <div class="panel chart">
           <h3>Woher kommt Ihr Strom?</h3>
@@ -493,7 +493,7 @@ dialog::backdrop{background:rgba(5,7,10,.7);backdrop-filter:blur(6px)}
     var save=self*pr+feed*0.06;
         $('oC').value=f(+c.value)+' kWh'; $('oK').value=(''+kwp).replace('.',',')+' kWp'; $('oP').value=p.value+' Cent/kWh';
     $('hK').textContent='Rund '+Math.round(kwp/0.43)+' Module, etwa '+Math.round(kwp*5)+' m² Dachfläche.';
-    $('rSave').textContent=f(save)+' Euro'; $('rSelfKwh').textContent=f(self)+' kWh'; $('rGrid').textContent=f(self)+' kWh';
+    $('rSave').textContent=f(save)+' Euro'; $('rSelfKwh').textContent=f(self)+' kWh'; $('rFeed').textContent=f(feed)+' kWh';
     $('rYield').textContent=f(y)+' kWh'; $('rSelf').textContent=Math.round(self/y*100)+' %'; $('rAut').textContent=Math.round(self/cons*100)+' %';
         var w=function(id,v,t){$(id).style.width=(v/t*100)+'%'};
     w('b1a',direct,cons); w('b1b',fromBat,cons); w('b1c',grid,cons); w('b2a',self,y); w('b2b',feed,y);
