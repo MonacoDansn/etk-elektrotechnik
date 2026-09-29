@@ -338,6 +338,39 @@ p{margin:0}
 .faq-light .faq-list details p{color:#2c333e}
 @media (max-width:960px){.article .wrap{grid-template-columns:1fr}.aside{position:static}}
 
+
+/* ---------- Simplify / mobile ---------- */
+.hero{padding:130px 0 70px}
+.hero-bolt{width:min(38vw,520px);opacity:.75;top:14%}
+.section{padding:clamp(60px,8vw,96px) 0}
+.section-head{margin-bottom:clamp(28px,4vw,44px)}
+.guide-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px 24px}
+.guide-list a{display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:12px;background:#fff;border:1px solid rgba(18,21,28,.08);color:var(--paper-text);font-weight:500;transition:border-color .2s,transform .2s}
+.guide-list a svg{width:18px;height:18px;color:var(--yellow);flex:none}
+.guide-list a:hover{border-color:rgba(255,171,17,.7);transform:translateX(3px)}
+.guide-list a.hot{background:var(--ink);color:#fff;border-color:var(--ink)}
+.trust{margin-top:40px;padding-top:24px}
+@media (max-width:600px){
+  .hero{padding:110px 0 56px}
+  .hero-bolt{width:70vw;right:-32vw;top:auto;bottom:-4%;opacity:.35}
+  .hero h1{font-size:2.5rem}
+  .hero .lead{font-size:1rem}
+  .hero-cta .btn{width:100%;justify-content:center}
+  .trust{gap:10px}
+  .trust div{font-size:.88rem}
+  .card{padding:24px 20px}
+  .card .tag{position:static;display:inline-block;margin-bottom:12px}
+  .icon{width:48px;height:48px;margin-bottom:16px}
+  .map{min-height:280px}
+  .contact-item{padding:16px}
+  .contact-item b{font-size:1rem;word-break:break-word}
+  .contact-item .arrow{display:none}
+  .logo-card{padding:36px 24px}
+  .faq-list summary{font-size:.98rem;padding:14px 0}
+  .section-head h2{font-size:1.7rem}
+  footer .wrap{flex-direction:column;align-items:flex-start;gap:14px}
+}
+
 /* ---------- Contact ---------- */
 .contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:stretch}
 .contact-list{display:grid;gap:16px;margin-top:34px}
@@ -430,11 +463,7 @@ dialog::backdrop{background:rgba(5,7,10,.7);backdrop-filter:blur(6px)}
     <a class="brand" href="#top" aria-label="ETK Elektrotechnik, Startseite"><svg><use href="#logo"/></svg></a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#leistungen">Leistungen</a></li>
-      <li><a href="#ablauf">Ablauf</a></li>
-      <li><a href="#warum">Warum ETK</a></li>
-      <li><a href="#ueber">Über mich</a></li>
       <li><a href="#ratgeber">Ratgeber</a></li>
-      <li><a href="#faq">FAQ</a></li>
       <li><a href="pv-rechner.html">Rechner</a></li>
       <li><a href="#kontakt">Kontakt</a></li>
     </ul>
@@ -450,9 +479,8 @@ dialog::backdrop{background:rgba(5,7,10,.7);backdrop-filter:blur(6px)}
   <svg class="hero-bolt" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6z"/></svg>
   <div class="wrap">
     <div class="hero-content">
-      <span class="pill"><span class="dot"></span>Termine für PV-Anlagen &amp; Elektroinstallation verfügbar</span>
       <h1>Elektriker &amp; Photovoltaik <span class="hl">in Straßwalchen</span></h1>
-      <p class="lead">PV-Anlagen und Solaranlagen mit Speicher, Elektroinstallation für Haus und Gewerbe. Planung, Montage und Anmeldung aus einer Hand, für den Flachgau, Salzburg-Umgebung und das Innviertel.</p>
+      <p class="lead">PV-Anlagen mit Speicher und Elektroinstallation für Haus und Gewerbe. Planung, Montage und Anmeldung aus einer Hand, im Flachgau, in Salzburg und im Innviertel.</p>
       <div class="hero-cta">
         <a class="btn btn-primary" href="https://wa.me/436603723101" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Anfrage per WhatsApp</a>
         <a class="btn btn-ghost" href="pv-rechner.html"><svg><use href="#i-bolt"/></svg>PV-Rechner: Ersparnis berechnen</a>
@@ -460,7 +488,7 @@ dialog::backdrop{background:rgba(5,7,10,.7);backdrop-filter:blur(6px)}
       <div class="trust">
         <div><svg><use href="#i-shield"/></svg>Elektrotechnik-Meisterbetrieb</div>
         <div><svg><use href="#i-pin"/></svg>Straßwalchen · Flachgau · Innviertel</div>
-        <div><svg><use href="#i-hand"/></svg>Beratung, Montage &amp; Anmeldung aus einer Hand</div>
+        <div><svg><use href="#i-hand"/></svg>Kostenlose Erstberatung</div>
       </div>
     </div>
   </div>
@@ -472,8 +500,8 @@ dialog::backdrop{background:rgba(5,7,10,.7);backdrop-filter:blur(6px)}
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow">Leistungen</span>
-      <h2>PV-Anlage, Solaranlage und Elektroinstallation aus einer Hand.</h2>
-      <p>Zwei Schwerpunkte, ein Anspruch: technisch sauber, wirtschaftlich sinnvoll und langlebig.</p>
+      <h2>Photovoltaik und Elektroinstallation.</h2>
+      <p>Zwei Schwerpunkte, ein Anspruch: technisch sauber, wirtschaftlich sinnvoll und langlebig. Meisterbetrieb mit Konzession, Arbeiten nach aktuellen Normen mit Prüfprotokoll.</p>
     </div>
     <div class="cards">
       <article class="card reveal">
@@ -505,53 +533,16 @@ dialog::backdrop{background:rgba(5,7,10,.7);backdrop-filter:blur(6px)}
   </div>
 </section>
 
-<!-- ================= ABLAUF ================= -->
-<section class="section process" id="ablauf">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">So läuft's ab</span>
-      <h2>In vier Schritten zur eigenen Solaranlage.</h2>
-    </div>
-    <div class="steps">
-      <div class="step reveal"><div class="num">01</div><h3>Erstgespräch</h3><p>Sie schildern Ihr Vorhaben, ich stelle die richtigen Fragen. Per WhatsApp, Telefon oder vor Ort.</p></div>
-      <div class="step reveal" data-delay="1"><div class="num">02</div><h3>Planung &amp; Angebot</h3><p>Dachcheck, Ertragsabschätzung, Komponenten von K2 und Huawei und ein transparentes Angebot ohne versteckte Extras.</p></div>
-      <div class="step reveal" data-delay="2"><div class="num">03</div><h3>Montage</h3><p>Fachgerechte Installation von Modulen, Wechselrichter, Speicher und Verteiler. Sauber und termingerecht.</p></div>
-      <div class="step reveal" data-delay="3"><div class="num">04</div><h3>Anmeldung &amp; Start</h3><p>Anmeldung beim Netzbetreiber, Prüfprotokoll, Inbetriebnahme und Einweisung in Ihre Anlage.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= WARUM ================= -->
-<section class="section why" id="warum">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">Warum ETK</span>
-      <h2>Ihr Elektriker in Straßwalchen. Ein Ansprechpartner, von Anfang bis Ende.</h2>
-      <p>Sie sprechen immer direkt mit dem, der Ihre Anlage plant und montiert.</p>
-    </div>
-    <div class="grid">
-      <div class="feature reveal"><div class="icon"><svg><use href="#i-pin"/></svg></div><h3>Regional &amp; persönlich</h3><p>Ihr Ansprechpartner aus Straßwalchen für den Flachgau, Salzburg-Umgebung und das Innviertel.</p></div>
-      <div class="feature reveal" data-delay="1"><div class="icon"><svg><use href="#i-hand"/></svg></div><h3>Alles aus einer Hand</h3><p>Beratung, Planung, Montage, Anmeldung und Service, ohne Schnittstellen und Wartezeiten.</p></div>
-      <div class="feature reveal" data-delay="2"><div class="icon"><svg><use href="#i-shield"/></svg></div><h3>Fachgerecht &amp; geprüft</h3><p>Meisterbetrieb mit Konzession. Arbeiten nach aktuellen Normen, immer mit Prüfprotokoll.</p></div>
-      <div class="feature reveal" data-delay="3"><div class="icon"><svg><use href="#i-euro"/></svg></div><h3>Faire, transparente Angebote</h3><p>Klare Kostenaufstellung pro Position. Keine versteckten Extras, keine Überraschungen.</p></div>
-    </div>
-  </div>
-</section>
-
 <!-- ================= ÜBER MICH ================= -->
 <section class="section about" id="ueber">
   <div class="wrap">
     <div class="reveal">
       <span class="eyebrow">Über mich</span>
-      <h2 style="font-size:clamp(2rem,4vw,3rem);margin-top:16px">Ing. Daniel Kaltenbrunner, Elektrotechnik-Meister</h2>
+      <h2 style="font-size:clamp(1.8rem,3.6vw,2.6rem);margin-top:16px">Ing. Daniel Kaltenbrunner, Elektrotechnik-Meister</h2>
       <p class="body">Ich bin Elektrotechnik-Meister und Ingenieur aus Straßwalchen. Seit 2023 führe ich ETK Elektrotechnik Kaltenbrunner und betreue Privat- und Gewerbekunden im Flachgau und Umgebung. Mein Schwerpunkt liegt auf Photovoltaikanlagen mit Speicher sowie klassischer Elektroinstallation.</p>
-      <p class="body">Mir ist wichtig, dass Sie eine Lösung bekommen, die technisch sauber ist, sich rechnet und lange hält.</p>
-      <div class="facts">
-        <div class="fact"><b>2023</b><span>Gründung in Neumarkt am Wallersee</span></div>
-        <div class="fact"><b>Ing. &amp; Meister</b><span>Elektrotechnik, konzessionierter Betrieb</span></div>
-        <div class="fact"><b>5204</b><span>Straßwalchen, Breitenberg 21</span></div>
-      </div>
-    </div>
+      <p class="body">Sie sprechen immer direkt mit dem, der Ihre Anlage plant und montiert. Angebote sind pro Position aufgeschlüsselt, ohne versteckte Extras.</p>
+      <p class="body"><strong>Einsatzgebiet:</strong> Straßwalchen, Neumarkt, Seekirchen, Köstendorf, Henndorf, Mattsee, Obertrum, Eugendorf, Thalgau, Stadt Salzburg, Mondsee, Lengau, Mattighofen, Friedburg, Lochen und Umgebung.</p>
+          </div>
     <div class="logo-card reveal" data-delay="1"><svg><use href="#logo"/></svg></div>
   </div>
 </section>
@@ -561,22 +552,10 @@ dialog::backdrop{background:rgba(5,7,10,.7);backdrop-filter:blur(6px)}
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow">Ratgeber</span>
-      <h2>Photovoltaik verstehen: Kosten, Förderung, Speicher, Anmeldung.</h2>
-      <p>Ehrliche Antworten aus der Praxis im Flachgau, ohne Verkaufsfloskeln.</p>
+      <h2>Ratgeber und Rechner.</h2>
+      <p>Ehrliche Antworten aus der Praxis, ohne Verkaufsfloskeln.</p>
     </div>
-    <div class="guide-grid reveal" data-delay="1"><a class="guide" href="pv-rechner.html" style="border-color:rgba(255,171,17,.8)"><h3>PV-Rechner</h3><p>Ertrag, Eigenverbrauch und Ersparnis in 30 Sekunden berechnen.</p><span>Jetzt rechnen</span></a><a class="guide" href="photovoltaik-kosten.html"><h3>Kosten & Rechner</h3><p>Was kostet eine PV-Anlage?</p><span>Mehr erfahren</span></a><a class="guide" href="photovoltaik-foerderung.html"><h3>Förderung</h3><p>Photovoltaik Förderung Salzburg 2026</p><span>Mehr erfahren</span></a><a class="guide" href="stromspeicher.html"><h3>Speicher</h3><p>Stromspeicher für Ihre PV-Anlage</p><span>Mehr erfahren</span></a><a class="guide" href="wallbox.html"><h3>Wallbox</h3><p>Wallbox Installation</p><span>Mehr erfahren</span></a><a class="guide" href="waermepumpe-heizstab.html"><h3>Wärmepumpe</h3><p>Photovoltaik, Wärmepumpe und Heizstab</p><span>Mehr erfahren</span></a><a class="guide" href="balkonkraftwerk.html"><h3>Balkonkraftwerk</h3><p>Balkonkraftwerk 800 Watt</p><span>Mehr erfahren</span></a><a class="guide" href="photovoltaik-dach.html"><h3>Dachformen</h3><p>Photovoltaik für jedes Dach</p><span>Mehr erfahren</span></a><a class="guide" href="netzanschluss-anmeldung.html"><h3>Anmeldung</h3><p>PV-Anlage anmelden und einspeisen</p><span>Mehr erfahren</span></a><a class="guide" href="elektriker-salzburg.html"><h3>Elektriker</h3><p>Ihr Elektriker für Salzburg und den Flachgau</p><span>Mehr erfahren</span></a><a class="guide" href="wartung-pruefung.html"><h3>Wartung</h3><p>Wartung, Prüfung und Erweiterung</p><span>Mehr erfahren</span></a></div>
-  </div>
-</section>
-
-<!-- ================= EINSATZGEBIET ================= -->
-<section class="section regions" id="einsatzgebiet">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">Einsatzgebiet</span>
-      <h2>Photovoltaik in Salzburg, Flachgau, Innviertel und Mondseeland.</h2>
-      <p>Vom Firmensitz in Straßwalchen aus sind wir in 20 bis 40 Minuten bei Ihnen: im gesamten Flachgau, in der Stadt Salzburg, im Innviertel rund um Mattighofen sowie im Mondseeland. Kurze Wege heißen schnelle Termine und faire Anfahrt.</p>
-    </div>
-    <ul class="region-list reveal" data-delay="1"><li>Straßwalchen</li><li>Neumarkt am Wallersee</li><li>Seekirchen am Wallersee</li><li>Köstendorf</li><li>Henndorf am Wallersee</li><li>Mattsee</li><li>Obertrum am See</li><li>Eugendorf</li><li>Thalgau</li><li>Stadt Salzburg</li><li>Mondsee</li><li>Lengau</li><li>Mattighofen</li><li>Friedburg</li><li>Lochen am See</li><li>Frankenmarkt</li><li>Vöcklamarkt</li><li>Salzburg-Umgebung</li></ul>
+    <ul class="guide-list reveal" data-delay="1"><li><a href="pv-rechner.html" class="hot"><svg><use href="#i-arrow"/></svg>PV-Rechner: Ersparnis berechnen</a></li><li><a href="photovoltaik-kosten.html"><svg><use href="#i-arrow"/></svg>Was kostet eine PV-Anlage?</a></li><li><a href="photovoltaik-foerderung.html"><svg><use href="#i-arrow"/></svg>Förderung Salzburg 2026</a></li><li><a href="stromspeicher.html"><svg><use href="#i-arrow"/></svg>Stromspeicher und Notstrom</a></li><li><a href="wallbox.html"><svg><use href="#i-arrow"/></svg>Wallbox Installation</a></li><li><a href="waermepumpe-heizstab.html"><svg><use href="#i-arrow"/></svg>Wärmepumpe und Heizstab</a></li><li><a href="balkonkraftwerk.html"><svg><use href="#i-arrow"/></svg>Balkonkraftwerk 800 Watt</a></li><li><a href="photovoltaik-dach.html"><svg><use href="#i-arrow"/></svg>Photovoltaik für jedes Dach</a></li><li><a href="netzanschluss-anmeldung.html"><svg><use href="#i-arrow"/></svg>Anmeldung und Einspeisung</a></li><li><a href="elektriker-salzburg.html"><svg><use href="#i-arrow"/></svg>Elektriker Salzburg und Flachgau</a></li><li><a href="wartung-pruefung.html"><svg><use href="#i-arrow"/></svg>Wartung, Prüfung, Erweiterung</a></li></ul>
   </div>
 </section>
 
@@ -585,15 +564,13 @@ dialog::backdrop{background:rgba(5,7,10,.7);backdrop-filter:blur(6px)}
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow">Häufige Fragen</span>
-      <h2>Photovoltaik in Straßwalchen: die wichtigsten Antworten.</h2>
+      <h2>Häufige Fragen.</h2>
     </div>
     <div class="faq-list">
       <details class="reveal"><summary>Was kostet eine Photovoltaikanlage in Straßwalchen?</summary><p>Die Kosten hängen von Dachfläche, Modulanzahl, Wechselrichter und Speicher ab. Nach einer kostenlosen Dachbesichtigung erhalten Sie ein transparentes Angebot mit klarer Kostenaufstellung pro Position, ohne versteckte Extras.</p></details>
       <details class="reveal"><summary>Wie lange dauert die Montage einer PV-Anlage?</summary><p>Die Montage einer typischen Anlage für ein Einfamilienhaus dauert in der Regel ein bis drei Arbeitstage. Danach folgen Anmeldung beim Netzbetreiber, Prüfprotokoll und Inbetriebnahme.</p></details>
       <details class="reveal"><summary>Übernehmen Sie die Anmeldung beim Netzbetreiber?</summary><p>Ja. Die Anmeldung bei Salzburg Netz oder Netz Oberösterreich, das Prüfprotokoll und die Inbetriebnahme sind Teil des Auftrags.</p></details>
       <details class="reveal"><summary>Welche Komponenten verbauen Sie?</summary><p>Unterkonstruktionen von K2 Systems sowie Wechselrichter und Batteriespeicher von Huawei (SUN2000 und LUNA2000). Damit sind Garantie, Ersatzteile und Service langfristig gesichert.</p></details>
-      <details class="reveal"><summary>Lohnt sich ein Stromspeicher?</summary><p>Mit Speicher nutzen Sie den Solarstrom auch abends und nachts und erhöhen den Eigenverbrauch deutlich. Ob sich das rechnet, hängt von Ihrem Verbrauchsprofil ab. Das schauen wir uns im Erstgespräch gemeinsam an.</p></details>
-      <details class="reveal"><summary>Machen Sie auch kleinere Elektroarbeiten?</summary><p>Ja. Von der zusätzlichen Steckdose über die Außenbeleuchtung bis zum Wallbox-Anschluss. Für Neubau und Sanierung übernehmen wir die komplette Elektroinstallation.</p></details>
     </div>
   </div>
 </section>
@@ -603,7 +580,7 @@ dialog::backdrop{background:rgba(5,7,10,.7);backdrop-filter:blur(6px)}
   <div class="wrap">
     <div class="reveal">
       <span class="eyebrow">Kontakt</span>
-      <h2 style="font-size:clamp(2rem,4vw,3rem);margin-top:16px">Reden wir über Ihr Projekt.</h2>
+      <h2 style="font-size:clamp(1.8rem,3.6vw,2.6rem);margin-top:16px">Kontakt</h2>
       <p style="margin-top:16px;color:var(--muted);font-size:1.1rem">Rufen Sie an, schreiben Sie per WhatsApp oder E-Mail. Ich melde mich zeitnah für ein unverbindliches Erstgespräch.</p>
       <div class="contact-list">
         <a class="contact-item" href="https://wa.me/436603723101" target="_blank" rel="noopener"><div class="icon"><svg><use href="#i-wa"/></svg></div><div><small>WhatsApp</small><b>0660 / 372 31 01</b></div><svg class="arrow"><use href="#i-arrow"/></svg></a>
@@ -614,12 +591,6 @@ dialog::backdrop{background:rgba(5,7,10,.7);backdrop-filter:blur(6px)}
     </div>
     <div class="map reveal" data-delay="1">
       <iframe title="Standort ETK Elektrotechnik Kaltenbrunner, Elektriker in Straßwalchen" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Breitenberg%2021%2C%205204%20Stra%C3%9Fwalchen&z=14&output=embed"></iframe>
-    </div>
-  </div>
-  <div class="wrap">
-    <div class="cta-band reveal">
-      <div><h3>PV-Anlage oder Elektroinstallation geplant?</h3><p>Schreiben Sie mir kurz, worum es geht. Sie bekommen zeitnah eine Rückmeldung.</p></div>
-      <a class="btn btn-dark" href="https://wa.me/436603723101" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Jetzt anfragen</a>
     </div>
   </div>
 </section>

@@ -303,6 +303,39 @@ p{margin:0}
 .faq-light .faq-list details p{color:#2c333e}
 @media (max-width:960px){.article .wrap{grid-template-columns:1fr}.aside{position:static}}
 
+
+/* ---------- Simplify / mobile ---------- */
+.hero{padding:130px 0 70px}
+.hero-bolt{width:min(38vw,520px);opacity:.75;top:14%}
+.section{padding:clamp(60px,8vw,96px) 0}
+.section-head{margin-bottom:clamp(28px,4vw,44px)}
+.guide-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px 24px}
+.guide-list a{display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:12px;background:#fff;border:1px solid rgba(18,21,28,.08);color:var(--paper-text);font-weight:500;transition:border-color .2s,transform .2s}
+.guide-list a svg{width:18px;height:18px;color:var(--yellow);flex:none}
+.guide-list a:hover{border-color:rgba(255,171,17,.7);transform:translateX(3px)}
+.guide-list a.hot{background:var(--ink);color:#fff;border-color:var(--ink)}
+.trust{margin-top:40px;padding-top:24px}
+@media (max-width:600px){
+  .hero{padding:110px 0 56px}
+  .hero-bolt{width:70vw;right:-32vw;top:auto;bottom:-4%;opacity:.35}
+  .hero h1{font-size:2.5rem}
+  .hero .lead{font-size:1rem}
+  .hero-cta .btn{width:100%;justify-content:center}
+  .trust{gap:10px}
+  .trust div{font-size:.88rem}
+  .card{padding:24px 20px}
+  .card .tag{position:static;display:inline-block;margin-bottom:12px}
+  .icon{width:48px;height:48px;margin-bottom:16px}
+  .map{min-height:280px}
+  .contact-item{padding:16px}
+  .contact-item b{font-size:1rem;word-break:break-word}
+  .contact-item .arrow{display:none}
+  .logo-card{padding:36px 24px}
+  .faq-list summary{font-size:.98rem;padding:14px 0}
+  .section-head h2{font-size:1.7rem}
+  footer .wrap{flex-direction:column;align-items:flex-start;gap:14px}
+}
+
 /* ---------- Contact ---------- */
 .contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:stretch}
 .contact-list{display:grid;gap:16px;margin-top:34px}
@@ -393,11 +426,7 @@ dialog::backdrop{background:rgba(5,7,10,.7);backdrop-filter:blur(6px)}
     <a class="brand" href="index.html" aria-label="ETK Elektrotechnik, Startseite"><svg><use href="#logo"/></svg></a>
     <ul class="nav-links" id="navLinks">
       <li><a href="index.html#leistungen">Leistungen</a></li>
-      <li><a href="index.html#ablauf">Ablauf</a></li>
-      <li><a href="index.html#warum">Warum ETK</a></li>
-      <li><a href="index.html#ueber">Über mich</a></li>
       <li><a href="index.html#ratgeber">Ratgeber</a></li>
-      <li><a href="index.html#faq">FAQ</a></li>
       <li><a href="pv-rechner.html">Rechner</a></li>
       <li><a href="index.html#kontakt">Kontakt</a></li>
     </ul>
