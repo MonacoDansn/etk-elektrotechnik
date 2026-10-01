@@ -429,7 +429,7 @@ dialog::backdrop{background:rgba(5,7,10,.7);backdrop-filter:blur(6px)}
   <div class="wrap">
     <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Startseite</a> · PV-Rechner</nav>
     <h1>PV-Rechner: Was bringt Ihnen eine Photovoltaikanlage?</h1>
-    <p class="lead">Stromverbrauch eingeben, Anlagengröße wählen, Haken setzen. Sie sehen sofort Ertrag, Eigenverbrauch, Ersparnis und Amortisation. Richtwerte für den Raum Salzburg, Flachgau und Innviertel.</p>
+    <p class="lead">Stromverbrauch eingeben, Anlagengröße wählen, Haken setzen. Sie sehen sofort Ertrag, Eigenverbrauch, Autarkie und Ersparnis. Richtwerte für den Raum Salzburg, Flachgau und Innviertel.</p>
   </div>
 </section>
 
@@ -492,7 +492,7 @@ dialog::backdrop{background:rgba(5,7,10,.7);backdrop-filter:blur(6px)}
             <div class="legend"><span class="c-sun">Selbst verbraucht <b id="l2a"></b></span><span class="c-feed">Eingespeist <b id="l2b"></b></span></div>
           </div>
           <div class="tip" id="tip"></div>
-          <p class="disclaimer">Richtwerte: Ertrag je nach Ausrichtung 500 bis 1.100 kWh pro kWp und Jahr, Einspeisevergütung 6 Cent/kWh. Verschattung, Dachneigung und Ihr Nutzungsverhalten verändern das Ergebnis. Die genaue Planung machen wir gemeinsam vor Ort.</p>
+          <p class="disclaimer">Richtwerte: Ertrag je nach Ausrichtung 500 bis 1.100 kWh pro kWp und Jahr, Einspeisevergütung 6 Cent/kWh. Gerechnet wird Monat für Monat, damit der geringe Winterertrag und der Winterverbrauch der Wärmepumpe realistisch eingehen. Verschattung, Dachneigung und Ihr Nutzungsverhalten verändern das Ergebnis. Die genaue Planung machen wir gemeinsam vor Ort.</p>
         </div>
         <div class="cta-band" style="margin-top:0">
           <div><h3>Ergebnis gefällt? Dann rechnen wir es genau.</h3><p>Kostenlose Dachbesichtigung und Angebot pro Position, ohne versteckte Extras.</p></div>
@@ -510,14 +510,20 @@ dialog::backdrop{background:rgba(5,7,10,.7);backdrop-filter:blur(6px)}
   var f=function(n){return Math.round(n).toLocaleString('de-DE')};
   function ori(){var r=document.querySelector('input[name=o]:checked');return +r.value}
   function run(){
-    var cons=+c.value+(hp.checked?3000:0)+(ev.checked?2500:0);
-    var kwp=+k.value, y=kwp*ori(), pr=(+p.value)/100;
-    // Eigenverbrauchsanteil: hängt vom Verhältnis Ertrag/Verbrauch ab
-    var ratio=y/cons; var base=ratio<=0.5?0.55:ratio<=1?0.42-(ratio-0.5)*0.2:0.32-Math.min(ratio-1,2)*0.06;
-    if(hp.checked)base+=0.07; if(ev.checked)base+=0.08;
-    var direct=Math.min(y*base, cons*0.6);
-    var fromBat=0, bs=+bat.value;
-    if(bs>0){ var rest=Math.min(y-direct, cons-direct); fromBat=Math.min(rest*0.6, bs*290); }
+    // Monatsmodell Raum Salzburg: PV-Ertrag, Haushalt, Waermepumpe (Winterlast) und E-Auto je Monat
+    var PVm=[3,5,8.5,11,12.5,13,13.5,12,9,6.5,3.5,2.5], HHm=[9.5,8.5,8.5,8,7.8,7.3,7.3,7.3,7.6,8.3,9,10.9],
+        HPm=[17,14,12,7,4,2.5,2.5,2.5,3.5,7,12,16], DAYS=[31,28,31,30,31,30,31,31,30,31,30,31];
+    var smin=function(a,b,n){return (a<=0||b<=0)?0:a*b/Math.pow(Math.pow(a,n)+Math.pow(b,n),1/n)};
+    var hh=+c.value, kwp=+k.value, y=kwp*ori(), pr=(+p.value)/100, bs=+bat.value;
+    var cons=0, direct=0, fromBat=0;
+    for(var m=0;m<12;m++){
+      var P=y*PVm[m]/100, Lh=hh*HHm[m]/100, Lp=hp.checked?3000*HPm[m]/100:0, Le=ev.checked?2500/12:0;
+      var L=Lh+Lp+Le, Lday=Lh*0.34+Lp*0.25+Le*0.28;
+      var d=smin(P,Lday,2.2), S=P-d, R=L-d;
+      var b=bs>0?smin(smin(S*0.9,R,2.3),bs*0.9*DAYS[m]*0.65,2.3):0;
+      cons+=L; direct+=d; fromBat+=b;
+    }
+    var ratio=y/cons;
     var self=direct+fromBat, feed=Math.max(y-self,0), grid=Math.max(cons-self,0);
     var save=self*pr+feed*0.06;
         $('oC').value=f(+c.value)+' kWh'; $('oK').value=(''+kwp).replace('.',',')+' kWp'; $('oP').value=p.value+' Cent/kWh';
@@ -531,8 +537,9 @@ dialog::backdrop{background:rgba(5,7,10,.7);backdrop-filter:blur(6px)}
     var tip='';
     if(ratio>1.8&&bs==0) tip='<b>Tipp: Anlage eher groß für Ihren Verbrauch.</b>Mehr als die Hälfte des Stroms würde eingespeist. Ein Speicher, eine Wallbox oder eine etwas kleinere Anlage rechnen sich besser.';
     else if(ratio<0.6) tip='<b>Tipp: Da geht mehr.</b>Ihr Dach könnte deutlich mehr Verbrauch decken. Prüfen Sie, ob eine größere Anlage Platz hat, pro kWp wird es günstiger.';
-    else if(bs==0&&feed>y*0.5) tip='<b>Tipp: Speicher prüfen.</b>Mit einem 10-kWh-Speicher würden Sie etwa '+f(Math.min(feed*0.6,2900))+' kWh mehr selbst nutzen statt einzuspeisen.';
-    else if(bs>0&&fromBat<bs*150) tip='<b>Tipp: Speicher eher groß.</b>Der Speicher wird nur teilweise ausgelastet. Eine kleinere Größe reicht bei diesem Verbrauch meist aus.';
+    else if(bs==0&&feed>y*0.5) tip='<b>Tipp: Speicher prüfen.</b>Mit einem Speicher würden Sie einen Teil des eingespeisten Stroms abends und nachts selbst nutzen. Wählen Sie oben eine Speichergröße, um den Effekt zu sehen.';
+    else if(bs>0&&fromBat<bs*120) tip='<b>Tipp: Speicher eher groß.</b>Der Speicher wird nur teilweise ausgelastet. Eine kleinere Größe reicht bei diesem Verbrauch meist aus.';
+    else if(hp.checked) tip='<b>Hinweis zur Wärmepumpe.</b>Die Wärmepumpe braucht den meisten Strom im Winter, wenn die Sonne wenig liefert. Mit Wärmepumpe und Speicher sind rund 50 bis 60 Prozent Autarkie realistisch.';
     else tip='<b>Passt gut zusammen.</b>Anlagengröße, Speicher und Verbrauch sind stimmig. Die genaue Auslegung machen wir gemeinsam vor Ort.';
     $('tip').innerHTML=tip;
     var msg='Hallo, ich habe den PV-Rechner genutzt: Verbrauch '+f(cons)+' kWh, '+kwp+' kWp, '+(bs>0?'mit '+bs+' kWh Speicher':'ohne Speicher')+(hp.checked?', Wärmepumpe':'')+(ev.checked?', E-Auto':'')+'. Bitte um ein Angebot.';
