@@ -365,25 +365,56 @@ dialog::backdrop{background:rgba(5,7,10,.7);backdrop-filter:blur(6px)}
 .tg b{display:block;font-size:.98rem}
 .tg small{color:var(--paper-muted);font-size:.85rem}
 .results{display:grid;gap:18px}
-.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .kpi div{padding:18px;border-radius:16px;background:#fff;border:1px solid rgba(18,21,28,.08)}
 .kpi small{display:block;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--paper-muted)}
 .kpi b{display:block;font-family:var(--font-head);font-size:1.7rem;margin-top:4px;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
 .kpi .hi{background:var(--ink);color:#fff;border-color:var(--ink)}
 .kpi .hi small{color:var(--muted)}
 .kpi .hi b{color:var(--yellow)}
-.chart{padding:24px 24px 18px}
-.chart h3{font-size:1.05rem;margin:0 0 14px}
-.bar{display:grid;gap:8px;margin-bottom:18px}
-.bar .track{display:flex;height:34px;border-radius:10px;overflow:hidden;background:#eceef2}
-.bar .track i{display:block;height:100%;transition:width .5s cubic-bezier(.2,.7,.2,1)}
-.bar .legend{display:flex;flex-wrap:wrap;gap:14px;font-size:.88rem;color:#2c333e}
-.bar .legend span::before{content:"";display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px;background:var(--c)}
-.c-sun{--c:#FFAB11}.c-bat{--c:#f5d27a}.c-grid{--c:#4b5563}.c-feed{--c:#c8cdd6}
+.stat,.chart{padding:24px}
+.stat h3,.chart h3{font-size:1.05rem;margin:0 0 4px}
+.stat .sub,.chart .sub{font-size:.85rem;color:var(--paper-muted);margin:0 0 16px}
+.ring-row{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center}
+.ring-side{padding:14px 8px;border-radius:14px;background:#f6f7f9;text-align:center;display:grid;gap:2px;min-width:0;border-top:4px solid var(--c)}
+.ring-side b{font-family:var(--font-head);font-size:1.15rem;font-variant-numeric:tabular-nums;color:#12151c;white-space:nowrap}
+.ring-side b em{font-style:normal;font-size:.72em;color:#2c333e;margin-left:3px}
+.ring-side span{font-size:.86rem;color:#2c333e}
+.ring-side small{font-size:.8rem;color:var(--paper-muted);font-variant-numeric:tabular-nums}
+.ring{position:relative;width:138px;height:138px;margin:0 auto}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:10;stroke-linecap:round;transition:stroke-dasharray .5s cubic-bezier(.2,.7,.2,1),stroke-dashoffset .5s cubic-bezier(.2,.7,.2,1)}
+.ring .rt{stroke:#eceef2;stroke-linecap:butt}
+.ring .g1,.ring .g2,.ring .o1,.ring .o2{stroke:var(--c)}
+.ring-c{position:absolute;inset:0;display:grid;place-content:center;text-align:center}
+.ring-c b{font-family:var(--font-head);font-size:1.45rem;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1.05}
+.ring-c span{font-size:.78rem;color:var(--paper-muted)}
+.g1{--c:#0b6b3c}.g2{--c:#5ec47f}.o1{--c:#f26a1b}.o2{--c:#f0a040}.gy{--c:#4fbf7a}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.85rem;color:#2c333e;margin-bottom:8px}
+.legend span::before{content:"";display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px;background:var(--c)}
+.bars{position:relative}
+.bars svg{width:100%;height:auto;display:block;font-family:var(--font-body);overflow:visible}
+.bars text{font-size:11px;fill:#6b7280}
+.bars .grid line{stroke:#e3e6eb}
+.bars .ax{stroke:#c9ced6}
+.bars .hit{fill:transparent;cursor:crosshair}
+.bars .hit:hover{fill:rgba(18,21,28,.05)}
+.tt{position:absolute;pointer-events:none;background:#12151c;color:#fff;font-size:.8rem;padding:8px 11px;border-radius:10px;white-space:nowrap;transform:translate(-50%,calc(-100% - 8px));opacity:0;transition:opacity .15s;line-height:1.5;z-index:2}
+.tt b{color:#fff;font-weight:600}
+.tt i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;background:var(--c)}
+.tt.on{opacity:1}
+.tbl{margin-top:12px;font-size:.84rem}
+.tbl summary{cursor:pointer;color:var(--paper-muted);list-style:none}
+.tbl summary::before{content:"+ "}.tbl[open] summary::before{content:"\2013 "}
+.tbl table{width:100%;border-collapse:collapse;margin-top:8px;font-variant-numeric:tabular-nums}
+.tbl td,.tbl th{padding:5px 6px;text-align:right;border-bottom:1px solid #eceef2;font-weight:500}
+.tbl th{color:var(--paper-muted);font-weight:500;font-size:.78rem}
+.tbl th:first-child,.tbl td:first-child{text-align:left}
 .tip{padding:16px 18px;border-radius:14px;background:#fff6e0;border:1px solid #ffe1a3;font-size:.95rem;color:#5a4200}
 .tip b{display:block;margin-bottom:4px}
 .disclaimer{font-size:.85rem;color:var(--paper-muted);margin-top:8px}
-@media (max-width:960px){.calc-grid{grid-template-columns:1fr}.seg{grid-template-columns:repeat(2,1fr)}.seg3{grid-template-columns:repeat(3,1fr)}.kpi{grid-template-columns:repeat(2,1fr)}.panel{padding:20px}.tg-sel{flex-wrap:wrap}.kpi b{font-size:1.35rem}}
+@media (max-width:960px){.calc-grid{grid-template-columns:1fr}.seg{grid-template-columns:repeat(2,1fr)}.seg3{grid-template-columns:repeat(3,1fr)}.panel{padding:20px}.tg-sel{flex-wrap:wrap}.kpi b{font-size:1.35rem}}
+@media (max-width:600px){.kpi{grid-template-columns:1fr 1fr}.kpi .hi{grid-column:1/-1}.stat,.chart{padding:18px 14px}.ring{width:104px;height:104px}.ring-row{gap:8px}.ring-c b{font-size:1.2rem}.ring-side{padding:12px 3px}.ring-side b{font-size:1rem}.ring-side span{font-size:.72rem}.ring-side small{font-size:.74rem}}
 </style>
 
 <script src="consent.js" defer></script>
@@ -475,23 +506,35 @@ dialog::backdrop{background:rgba(5,7,10,.7);backdrop-filter:blur(6px)}
       <div class="results">
         <div class="kpi">
           <div class="hi"><small>Ersparnis pro Jahr</small><b id="rSave">0 Euro</b></div>
-          <div><small>Solarertrag pro Jahr</small><b id="rYield">0 kWh</b></div>
-          <div><small>Selbst genutzt</small><b id="rSelfKwh">0 kWh</b></div>
           <div><small>Eigenverbrauch</small><b id="rSelf">0 %</b></div>
           <div><small>Autarkie</small><b id="rAut">0 %</b></div>
-          <div><small>Eingespeist</small><b id="rFeed">0 kWh</b></div>
+        </div>
+        <div class="panel stat">
+          <h3>Energieertrag</h3>
+          <p class="sub">So viel Solarstrom erzeugt Ihre Anlage im Jahr und wohin er geht.</p>
+          <div class="ring-row">
+            <div class="ring-side g1"><b id="eSelf">0 kWh</b><span>Eigenverbrauch</span><small id="eSelfP">(0 %)</small></div>
+            <div class="ring"><svg viewBox="0 0 120 120" aria-hidden="true"><circle class="rt" cx="60" cy="60" r="52"/><circle class="g1" id="ringY1" cx="60" cy="60" r="52"/><circle class="g2" id="ringY2" cx="60" cy="60" r="52"/></svg><div class="ring-c"><b id="rYield">0</b><span>kWh</span></div></div>
+            <div class="ring-side g2"><b id="eFeed">0 kWh</b><span>Netzeinspeisung</span><small id="eFeedP">(0 %)</small></div>
+          </div>
+        </div>
+        <div class="panel stat">
+          <h3>Verbrauch</h3>
+          <p class="sub">So viel Strom braucht Ihr Haushalt im Jahr und woher er kommt.</p>
+          <div class="ring-row">
+            <div class="ring-side o1"><b id="vPv">0 kWh</b><span>Vom PV</span><small id="vPvP">(0 %)</small></div>
+            <div class="ring"><svg viewBox="0 0 120 120" aria-hidden="true"><circle class="rt" cx="60" cy="60" r="52"/><circle class="o1" id="ringC1" cx="60" cy="60" r="52"/><circle class="o2" id="ringC2" cx="60" cy="60" r="52"/></svg><div class="ring-c"><b id="rCons">0</b><span>kWh</span></div></div>
+            <div class="ring-side o2"><b id="vGrid">0 kWh</b><span>Vom Netz</span><small id="vGridP">(0 %)</small></div>
+          </div>
         </div>
         <div class="panel chart">
-          <h3>Woher kommt Ihr Strom?</h3>
-          <div class="bar">
-            <div class="track"><i class="c-sun" id="b1a" style="background:#FFAB11"></i><i class="c-bat" id="b1b" style="background:#f5d27a"></i><i class="c-grid" id="b1c" style="background:#4b5563"></i></div>
-            <div class="legend"><span class="c-sun">Direkt von der Sonne <b id="l1a"></b></span><span class="c-bat">Aus dem Speicher <b id="l1b"></b></span><span class="c-grid">Aus dem Netz <b id="l1c"></b></span></div>
-          </div>
-          <h3>Wohin geht Ihr Solarstrom?</h3>
-          <div class="bar">
-            <div class="track"><i id="b2a" style="background:#FFAB11"></i><i id="b2b" style="background:#c8cdd6"></i></div>
-            <div class="legend"><span class="c-sun">Selbst verbraucht <b id="l2a"></b></span><span class="c-feed">Eingespeist <b id="l2b"></b></span></div>
-          </div>
+          <h3>Monat für Monat</h3>
+          <p class="sub">Im Sommer bleibt viel übrig, im Winter kommt der Strom großteils aus dem Netz.</p>
+          <div class="legend"><span class="gy">Solarertrag</span><span class="g1">Eigenverbrauch</span><span class="o1">Netzbezug</span></div>
+          <div class="bars" id="bars"><div class="tt" id="tt"></div></div>
+          <details class="tbl"><summary>Werte als Tabelle</summary><table id="tbl"></table></details>
+        </div>
+        <div class="panel chart">
           <div class="tip" id="tip"></div>
           <p class="disclaimer">Richtwerte: Ertrag je nach Ausrichtung 500 bis 1.100 kWh pro kWp und Jahr, Einspeisevergütung 6 Cent/kWh. Gerechnet wird Monat für Monat, damit der geringe Winterertrag und der Winterverbrauch der Wärmepumpe realistisch eingehen. Verschattung, Dachneigung und Ihr Nutzungsverhalten verändern das Ergebnis. Die genaue Planung machen wir gemeinsam vor Ort.</p>
         </div>
@@ -510,31 +553,80 @@ dialog::backdrop{background:rgba(5,7,10,.7);backdrop-filter:blur(6px)}
   var c=$('c'),k=$('k'),p=$('p'),hp=$('hp'),ev=$('ev'),bat=$('bat');
   var f=function(n){return Math.round(n).toLocaleString('de-DE')};
   function ori(){var r=document.querySelector('input[name=o]:checked');return +r.value}
+  function ring(id1,id2,a,b){
+    var C=2*Math.PI*52, gap=13, tot=a+b, fa=tot>0?a/tot:0;
+    var la=fa*C, lb=C-la, e1=$(id1), e2=$(id2);
+    if(la<=0.001*C){e1.style.strokeDasharray='0 '+C; e2.style.strokeDasharray=C+' '+C; e2.style.strokeDashoffset=0; return}
+    if(lb<=0.001*C){e2.style.strokeDasharray='0 '+C; e1.style.strokeDasharray=C+' '+C; e1.style.strokeDashoffset=0; return}
+    var da=Math.max(la-gap,0.5), db=Math.max(lb-gap,0.5);
+    e1.style.strokeDasharray=da+' '+C; e1.style.strokeDashoffset=-(gap/2);
+    e2.style.strokeDasharray=db+' '+C; e2.style.strokeDashoffset=-(la+gap/2);
+  }
+  var MN=['Jänner','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+  var cur={P:[],S:[],G:[]};
+  function bars(P,S,G){
+    cur={P:P,S:S,G:G};
+    var W=Math.max(300,Math.round($('bars').clientWidth||640)),H=Math.round(W*0.42)+40,L=44,R=4,T=12,B=26,iw=W-L-R,ih=H-T-B;
+    var mx=Math.max.apply(null,P.concat(S,G))||1, raw=mx/4, pw=Math.pow(10,Math.floor(Math.log(raw)/Math.LN10)), st=raw/pw;
+    st=(st<=1?1:st<=2?2:st<=2.5?2.5:st<=5?5:10)*pw; var top=Math.ceil(mx/st)*st;
+    var y=function(v){return T+ih-v/top*ih};
+    var gw=iw/12, pad=gw*0.16, bw=(gw-2*pad)/3, g=2, cols=['#4fbf7a','#0b6b3c','#f26a1b'];
+    var s='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Monatswerte: Solarertrag, Eigenverbrauch und Netzbezug"><g class="grid">';
+    for(var v=0;v<=top+0.001;v+=st){s+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+y(v).toFixed(1)+'" y2="'+y(v).toFixed(1)+'"/><text x="'+(L-7)+'" y="'+(y(v)+4).toFixed(1)+'" text-anchor="end">'+f(v)+'</text>'}
+    s+='</g>';
+    var bar=function(x,v,c){var w=bw-g, tp=y(v), bt=T+ih, h=bt-tp, r=Math.min(3,w/2,h); if(h<=0)return '';
+      return '<path fill="'+c+'" d="M'+x.toFixed(1)+' '+bt.toFixed(1)+'V'+(tp+r).toFixed(1)+'Q'+x.toFixed(1)+' '+tp.toFixed(1)+' '+(x+r).toFixed(1)+' '+tp.toFixed(1)+'H'+(x+w-r).toFixed(1)+'Q'+(x+w).toFixed(1)+' '+tp.toFixed(1)+' '+(x+w).toFixed(1)+' '+(tp+r).toFixed(1)+'V'+bt.toFixed(1)+'Z"/>'};
+    for(var m=0;m<12;m++){
+      var x0=L+m*gw+pad;
+      s+=bar(x0+g/2,P[m],cols[0])+bar(x0+bw+g/2,S[m],cols[1])+bar(x0+2*bw+g/2,G[m],cols[2]);
+      s+='<text x="'+(L+m*gw+gw/2).toFixed(1)+'" y="'+(H-8)+'" text-anchor="middle">'+(m<9?'0':'')+(m+1)+'</text>';
+    }
+    s+='<line class="ax" x1="'+L+'" x2="'+(W-R)+'" y1="'+(T+ih)+'" y2="'+(T+ih)+'"/>';
+    for(m=0;m<12;m++) s+='<rect class="hit" data-m="'+m+'" x="'+(L+m*gw).toFixed(1)+'" y="'+T+'" width="'+gw.toFixed(1)+'" height="'+ih+'"/>';
+    s+='</svg>';
+    var box=$('bars'), old=box.querySelector('svg'); if(old)old.remove();
+    box.insertAdjacentHTML('beforeend',s);
+    var tb='<tr><th>Monat</th><th>Solarertrag</th><th>Eigenverbrauch</th><th>Netzbezug</th></tr>';
+    for(m=0;m<12;m++) tb+='<tr><td>'+MN[m]+'</td><td>'+f(P[m])+' kWh</td><td>'+f(S[m])+' kWh</td><td>'+f(G[m])+' kWh</td></tr>';
+    $('tbl').innerHTML=tb;
+  }
+  (function(){
+    var box=$('bars'), tt=$('tt');
+    var show=function(e){var r=e.target; if(!r.classList||!r.classList.contains('hit'))return; var m=+r.getAttribute('data-m');
+      var rb=r.getBoundingClientRect(), cb=box.getBoundingClientRect();
+      tt.innerHTML='<b>'+MN[m]+'</b><br><i class="gy"></i>Solarertrag '+f(cur.P[m])+' kWh<br><i class="g1"></i>Eigenverbrauch '+f(cur.S[m])+' kWh<br><i class="o1"></i>Netzbezug '+f(cur.G[m])+' kWh';
+      var x=rb.left-cb.left+rb.width/2; x=Math.max(90,Math.min(cb.width-90,x));
+      tt.style.left=x+'px'; tt.style.top=(rb.top-cb.top+rb.height*0.35)+'px'; tt.classList.add('on')};
+    box.addEventListener('pointerover',show); box.addEventListener('pointermove',show);
+    box.addEventListener('pointerleave',function(){tt.classList.remove('on')});
+    var rt;window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(function(){if(cur.P.length)bars(cur.P,cur.S,cur.G)},150)});
+  })();
   function run(){
     // Monatsmodell Raum Salzburg: PV-Ertrag, Haushalt, Waermepumpe (Winterlast) und E-Auto je Monat
     var PVm=[3,5,8.5,11,12.5,13,13.5,12,9,6.5,3.5,2.5], HHm=[9.5,8.5,8.5,8,7.8,7.3,7.3,7.3,7.6,8.3,9,10.9],
         HPm=[17,14,12,7,4,2.5,2.5,2.5,3.5,7,12,16], DAYS=[31,28,31,30,31,30,31,31,30,31,30,31];
     var smin=function(a,b,n){return (a<=0||b<=0)?0:a*b/Math.pow(Math.pow(a,n)+Math.pow(b,n),1/n)};
     var hh=+c.value, kwp=+k.value, y=kwp*ori(), pr=(+p.value)/100, bs=+bat.value;
-    var cons=0, direct=0, fromBat=0;
+    var cons=0, direct=0, fromBat=0, mP=[], mS=[], mG=[];
     for(var m=0;m<12;m++){
       var P=y*PVm[m]/100, Lh=hh*HHm[m]/100, Lp=hp.checked?3000*HPm[m]/100:0, Le=ev.checked?2500/12:0;
       var L=Lh+Lp+Le, Lday=Lh*0.34+Lp*0.25+Le*0.28;
       var d=smin(P,Lday,2.2), S=P-d, R=L-d;
       var b=bs>0?smin(smin(S*0.9,R,2.3),bs*0.9*DAYS[m]*0.65,2.3):0;
-      cons+=L; direct+=d; fromBat+=b;
+      cons+=L; direct+=d; fromBat+=b; mP.push(P); mS.push(d+b); mG.push(Math.max(L-d-b,0));
     }
     var ratio=y/cons;
     var self=direct+fromBat, feed=Math.max(y-self,0), grid=Math.max(cons-self,0);
     var save=self*pr+feed*0.06;
         $('oC').value=f(+c.value)+' kWh'; $('oK').value=(''+kwp).replace('.',',')+' kWp'; $('oP').value=p.value+' Cent/kWh';
     $('hK').textContent='Rund '+Math.round(kwp/0.475)+' Module mit 475 W, etwa '+Math.round(kwp*5)+' m² Dachfläche.';
-    $('rSave').textContent=f(save)+' Euro'; $('rSelfKwh').textContent=f(self)+' kWh'; $('rFeed').textContent=f(feed)+' kWh';
-    $('rYield').textContent=f(y)+' kWh'; $('rSelf').textContent=Math.round(self/y*100)+' %'; $('rAut').textContent=Math.round(self/cons*100)+' %';
-        var w=function(id,v,t){$(id).style.width=(v/t*100)+'%'};
-    w('b1a',direct,cons); w('b1b',fromBat,cons); w('b1c',grid,cons); w('b2a',self,y); w('b2b',feed,y);
-    $('l1a').textContent=f(direct)+' kWh'; $('l1b').textContent=f(fromBat)+' kWh'; $('l1c').textContent=f(grid)+' kWh';
-    $('l2a').textContent=f(self)+' kWh'; $('l2b').textContent=f(feed)+' kWh';
+    $('rSave').textContent=f(save)+' Euro'; $('rSelf').textContent=Math.round(self/y*100)+' %'; $('rAut').textContent=Math.round(self/cons*100)+' %';
+    var u=function(v){return f(v)+'<em>kWh</em>'};
+    var pc=function(a,b){return '('+(a/b*100).toFixed(1).replace('.',',')+' %)'};
+    $('rYield').textContent=f(y); $('eSelf').innerHTML=u(self); $('eSelfP').textContent=pc(self,y); $('eFeed').innerHTML=u(feed); $('eFeedP').textContent=pc(feed,y);
+    $('rCons').textContent=f(cons); $('vPv').innerHTML=u(self); $('vPvP').textContent=pc(self,cons); $('vGrid').innerHTML=u(grid); $('vGridP').textContent=pc(grid,cons);
+    ring('ringY1','ringY2',self,feed); ring('ringC1','ringC2',self,grid);
+    bars(mP,mS,mG);
     var tip='';
     if(ratio>1.8&&bs==0) tip='<b>Tipp: Anlage eher groß für Ihren Verbrauch.</b>Mehr als die Hälfte des Stroms würde eingespeist. Ein Speicher, eine Wallbox oder eine etwas kleinere Anlage rechnen sich besser.';
     else if(ratio<0.6) tip='<b>Tipp: Da geht mehr.</b>Ihr Dach könnte deutlich mehr Verbrauch decken. Prüfen Sie, ob eine größere Anlage Platz hat, pro kWp wird es günstiger.';
