@@ -610,9 +610,9 @@ dialog::backdrop{background:rgba(5,7,10,.7);backdrop-filter:blur(6px)}
     var cons=0, direct=0, fromBat=0, mP=[], mS=[], mG=[];
     for(var m=0;m<12;m++){
       var P=y*PVm[m]/100, Lh=hh*HHm[m]/100, Lp=hp.checked?3000*HPm[m]/100:0, Le=ev.checked?2500/12:0;
-      var L=Lh+Lp+Le, Lday=Lh*0.34+Lp*0.25+Le*0.28;
+      var L=Lh+Lp+Le, Lday=Lh*0.46+Lp*0.05+Le*0.28;
       var d=smin(P,Lday,2.2), S=P-d, R=L-d;
-      var b=bs>0?smin(smin(S*0.9,R,2.3),bs*0.9*DAYS[m]*0.65,2.3):0;
+      var b=bs>0?smin(smin(S*0.9,R,4),bs*0.9*DAYS[m]*0.65,4):0;
       cons+=L; direct+=d; fromBat+=b; mP.push(P); mS.push(d+b); mG.push(Math.max(L-d-b,0));
     }
     var ratio=y/cons;
