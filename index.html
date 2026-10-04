@@ -396,6 +396,24 @@ footer nav a:hover{color:#fff}
 footer button{background:none;border:0;padding:0;font:inherit;font-size:.9rem;color:var(--muted);cursor:pointer}
 footer button:hover{color:#fff}
 
+/* ---------- Projekte ---------- */
+.projects{background:var(--ink);overflow:hidden;padding-bottom:clamp(60px,8vw,100px)}
+.projects .section-head{margin-bottom:clamp(28px,4vw,44px)}
+.marquee{position:relative;width:100%;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.marquee .track{display:flex;gap:14px;width:max-content;padding:4px 0;animation:mq 70s linear infinite;will-change:transform}
+.marquee-rev{margin-top:18px}
+.marquee-rev .track{animation:mq 46s linear infinite reverse;gap:10px}
+.marquee:hover .track{animation-play-state:paused}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.shot{height:300px;border-radius:18px;overflow:hidden;background:#171a21;border:1px solid var(--line);flex:none}
+.shot img,.shot video{height:100%;width:auto;display:block;object-fit:cover}
+.shot video{aspect-ratio:478/850}
+.ref{flex:none;display:inline-flex;align-items:center;gap:10px;padding:10px 18px 10px 14px;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid var(--line);font-size:.92rem;color:var(--muted);white-space:nowrap}
+.ref::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--yellow);flex:none}
+.ref b{color:#fff;font-weight:600}
+@media (max-width:600px){.shot{height:220px;border-radius:14px}.marquee .track{animation-duration:55s}.marquee-rev .track{animation-duration:40s}}
+@media (prefers-reduced-motion:reduce){.marquee .track{animation:none;width:auto;overflow-x:auto;padding:4px 20px;scroll-snap-type:x mandatory}.marquee{mask-image:none;-webkit-mask-image:none}.marquee .track>*{scroll-snap-align:start}.marquee .dup{display:none}}
+
 /* ---------- Impressum dialog ---------- */
 dialog{border:0;border-radius:24px;padding:0;max-width:min(720px,calc(100% - 32px));width:100%;background:#fff;color:var(--paper-text);box-shadow:0 50px 120px -30px rgba(0,0,0,.7)}
 dialog::backdrop{background:rgba(5,7,10,.7);backdrop-filter:blur(6px)}
@@ -464,6 +482,7 @@ dialog::backdrop{background:rgba(5,7,10,.7);backdrop-filter:blur(6px)}
     <a class="brand" href="#top" aria-label="ETK Elektrotechnik, Startseite"><svg><use href="#logo"/></svg></a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#leistungen">Leistungen</a></li>
+      <li><a href="#projekte">Projekte</a></li>
       <li><a href="#ratgeber">Ratgeber</a></li>
       <li><a href="pv-rechner.html">Rechner</a></li>
       <li><a href="#kontakt">Kontakt</a></li>
@@ -544,6 +563,23 @@ dialog::backdrop{background:rgba(5,7,10,.7);backdrop-filter:blur(6px)}
       <p class="body"><strong>Einsatzgebiet:</strong> Straßwalchen, Neumarkt, Seekirchen, Köstendorf, Henndorf, Mattsee, Obertrum, Eugendorf, Thalgau, Stadt Salzburg, Mondsee, Lengau, Mattighofen, Friedburg, Lochen und Umgebung.</p>
           </div>
     <div class="logo-card reveal" data-delay="1"><svg><use href="#logo"/></svg></div>
+  </div>
+</section>
+
+<!-- ================= PROJEKTE ================= -->
+<section class="section projects" id="projekte">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Projekte</span>
+      <h2>Aus unseren Montagen.</h2>
+      <p>Trina-Module auf K2 Unterkonstruktion, Huawei Wechselrichter und Speicher im Haus. Ein paar Eindrücke aus dem Flachgau, dem Innviertel und der Stadt Salzburg.</p>
+    </div>
+  </div>
+  <div class="marquee" aria-label="Fotos und Video von montierten Photovoltaikanlagen">
+    <div class="track"><figure class="shot"><img src="img/ref-6.jpg" alt="Photovoltaikanlage mit Trina Glas-Glas-Modulen auf einem Biberschwanz-Ziegeldach in der Stadt Salzburg" loading="lazy" decoding="async" width="1400" height="1050"></figure><figure class="shot"><img src="img/ref-1.jpg" alt="PV-Module auf K2 Unterkonstruktion auf einem Ziegeldach im Flachgau mit Blick ins Grüne" loading="lazy" decoding="async" width="787" height="1400"></figure><figure class="shot"><video src="img/montage.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Kurzes Video von der Montage einer Photovoltaikanlage"></video></figure><figure class="shot"><img src="img/ref-2.jpg" alt="Montage einer Photovoltaikanlage auf einem Einfamilienhaus mit Blick über Neumarkt am Wallersee" loading="lazy" decoding="async" width="1400" height="647"></figure><figure class="shot"><img src="img/ref-5.jpg" alt="Fertig montierte PV-Anlage mit Trina-Modulen auf Tondachziegeln, dahinter blauer Himmel" loading="lazy" decoding="async" width="1050" height="1400"></figure><figure class="shot"><img src="img/ref-3.jpg" alt="Drei Modulreihen einer Photovoltaikanlage auf einem Ziegeldach, daneben das Gerüst für die Montage" loading="lazy" decoding="async" width="1400" height="1050"></figure><figure class="shot dup"><img src="img/ref-6.jpg" alt="Photovoltaikanlage mit Trina Glas-Glas-Modulen auf einem Biberschwanz-Ziegeldach in der Stadt Salzburg" loading="lazy" decoding="async" width="1400" height="1050"></figure><figure class="shot dup"><img src="img/ref-1.jpg" alt="PV-Module auf K2 Unterkonstruktion auf einem Ziegeldach im Flachgau mit Blick ins Grüne" loading="lazy" decoding="async" width="787" height="1400"></figure><figure class="shot dup"><video src="img/montage.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Kurzes Video von der Montage einer Photovoltaikanlage"></video></figure><figure class="shot dup"><img src="img/ref-2.jpg" alt="Montage einer Photovoltaikanlage auf einem Einfamilienhaus mit Blick über Neumarkt am Wallersee" loading="lazy" decoding="async" width="1400" height="647"></figure><figure class="shot dup"><img src="img/ref-5.jpg" alt="Fertig montierte PV-Anlage mit Trina-Modulen auf Tondachziegeln, dahinter blauer Himmel" loading="lazy" decoding="async" width="1050" height="1400"></figure><figure class="shot dup"><img src="img/ref-3.jpg" alt="Drei Modulreihen einer Photovoltaikanlage auf einem Ziegeldach, daneben das Gerüst für die Montage" loading="lazy" decoding="async" width="1400" height="1050"></figure></div>
+  </div>
+  <div class="marquee marquee-rev" aria-label="Anlagengrößen umgesetzter Projekte">
+    <div class="track"><span class="ref"><b>Köstendorf</b>15,3 kWp · 14 kWh Speicher</span><span class="ref"><b>Neumarkt am Wallersee</b>13,795 kWp · 21 kWh Speicher</span><span class="ref"><b>Lengau</b>9,1 kWp</span><span class="ref"><b>Salzburg Stadt</b>13,5 kWp · 13,8 kWh Speicher</span><span class="ref"><b>Friedburg</b>14,875 kWp · 15 kWh Speicher</span><span class="ref"><b>Neumarkt am Wallersee</b>9,35 kWp</span><span class="ref"><b>Straßwalchen</b>15,035 kWp · 14 kWh Speicher</span><span class="ref dup"><b>Köstendorf</b>15,3 kWp · 14 kWh Speicher</span><span class="ref dup"><b>Neumarkt am Wallersee</b>13,795 kWp · 21 kWh Speicher</span><span class="ref dup"><b>Lengau</b>9,1 kWp</span><span class="ref dup"><b>Salzburg Stadt</b>13,5 kWp · 13,8 kWh Speicher</span><span class="ref dup"><b>Friedburg</b>14,875 kWp · 15 kWh Speicher</span><span class="ref dup"><b>Neumarkt am Wallersee</b>9,35 kWp</span><span class="ref dup"><b>Straßwalchen</b>15,035 kWp · 14 kWh Speicher</span></div>
   </div>
 </section>
 
